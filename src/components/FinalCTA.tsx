@@ -1,7 +1,9 @@
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export function FinalCTA() {
+  const navigate = useNavigate();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -41,7 +43,7 @@ export function FinalCTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button 
-              onClick={() => scrollToSection('contacto')}
+              onClick={() => navigate('/inscripcion')}
               className="group bg-orange-600 hover:bg-orange-700 text-white px-10 py-5 rounded-lg transition-all flex items-center justify-center gap-2 text-lg shadow-xl"
             >
               Inscríbete ahora
