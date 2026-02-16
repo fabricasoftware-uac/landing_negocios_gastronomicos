@@ -51,7 +51,7 @@ export function Header() {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <button 
               onClick={() => navigate('/inscripcion')}
               className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg transition-colors"
@@ -71,7 +71,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-200">
+          <nav className="lg:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
               <button onClick={() => scrollToSection('inicio')} className="text-gray-700 hover:text-orange-600 transition-colors text-left">
                 Inicio

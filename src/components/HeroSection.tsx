@@ -1,8 +1,9 @@
 import { motion } from 'motion/react';
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowDown, ArrowDownNarrowWideIcon, ArrowRight, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export function HeroSection() {
+  const navigate = useNavigate();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -60,18 +61,17 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row gap-4"
           >
             <button 
-              onClick={() => scrollToSection('programa')}
+              onClick={() => navigate('/inscripcion')}
               className="group bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg transition-all flex items-center justify-center gap-2"
             >
-              Conoce el programa
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+              Inscribete ahora!
             </button>
             <button 
-              onClick={() => scrollToSection('contacto')}
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border-2 border-white px-8 py-4 rounded-lg transition-all flex items-center justify-center gap-2"
+              onClick={() => scrollToSection('Conoce el programa')}
+              className="group bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border-2 border-white px-8 py-4 rounded-lg transition-all flex items-center justify-center gap-2"
             >
-              <MessageCircle size={20} />
-              Habla con un asesor
+              Conoce el programa
+              <ArrowDown className="group-hover:translate-y-1 transition-transform" size={20} />
             </button>
           </motion.div>
         </div>
