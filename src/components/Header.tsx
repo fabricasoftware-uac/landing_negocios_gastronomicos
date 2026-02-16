@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -46,7 +53,7 @@ export function Header() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <button 
-              onClick={() => scrollToSection('inscripcion')}
+              onClick={() => navigate('/inscripcion')}
               className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg transition-colors"
             >
               Inscríbete ahora
@@ -82,7 +89,7 @@ export function Header() {
                 Contacto
               </button>
               <button 
-                onClick={() => scrollToSection('inscripcion')}
+                onClick={() => navigate('/inscripcion')}
                 className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg transition-colors text-center"
               >
                 Inscríbete ahora
