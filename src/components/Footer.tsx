@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
   return (
@@ -41,6 +42,12 @@ export function Footer() {
               </li>
               <li>
                 <a href="#beneficios" className="text-gray-400 hover:text-orange-500 transition-colors">Beneficios</a>
+              </li>
+              <li>
+                <Link to="/inscripcion" className="text-gray-400 hover:text-orange-500 transition-colors">Inscríbete</Link>
+              </li>
+              <li>
+                <Link to="/reanudar" className="text-gray-400 hover:text-orange-500 transition-colors">Completar inscripción</Link>
               </li>
             </ul>
           </div>

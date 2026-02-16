@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Stepper } from '../components/Stepper';
@@ -47,6 +48,9 @@ export default function Inscripcion() {
             <h1 className="text-3xl md:text-4xl text-gray-900 mb-3">Inscripción al programa</h1>
             <div className="w-16 h-1 bg-orange-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Técnico Laboral en Gestión de Negocios Gastronómicos</p>
+            <p className="text-sm text-gray-500 mt-2">
+              ¿Ya iniciaste tu inscripción? <Link to="/reanudar" className="text-orange-600 hover:text-orange-700 underline">Retómala aquí</Link>
+            </p>
           </div>
 
           <Stepper steps={STEPS} currentStep={currentStep} />
