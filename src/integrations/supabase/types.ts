@@ -14,7 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      inscripciones: {
+        Row: {
+          acepta_terminos: boolean
+          ciudad: string
+          created_at: string
+          documento: string
+          email: string
+          estado: string
+          id: string
+          nivel_educativo: string
+          nombre_completo: string
+          telefono: string
+          updated_at: string
+        }
+        Insert: {
+          acepta_terminos?: boolean
+          ciudad: string
+          created_at?: string
+          documento: string
+          email: string
+          estado?: string
+          id?: string
+          nivel_educativo: string
+          nombre_completo: string
+          telefono: string
+          updated_at?: string
+        }
+        Update: {
+          acepta_terminos?: boolean
+          ciudad?: string
+          created_at?: string
+          documento?: string
+          email?: string
+          estado?: string
+          id?: string
+          nivel_educativo?: string
+          nombre_completo?: string
+          telefono?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

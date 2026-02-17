@@ -4,6 +4,7 @@ import { Search, CheckCircle2, Clock, AlertCircle } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
 
 type SearchStatus = 'idle' | 'loading' | 'pending' | 'paid' | 'not_found';
 
@@ -12,21 +13,34 @@ export default function Reanudar() {
   const [status, setStatus] = useState<SearchStatus>('idle');
   const navigate = useNavigate();
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!query.trim()) return;
 
     setStatus('loading');
-    setTimeout(() => {
-      const q = query.trim().toLowerCase();
-      if (q.includes('pagado') || q.includes('paid')) {
-        setStatus('paid');
-      } else if (q.includes('error') || q.includes('none')) {
+    try {
+      const q = query.trim();
+      const { data, error } = await supabase
+        .from('inscripciones')
+        .select('estado')
+        .or(`email.eq.${q},documento.eq.${q}`)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (error) throw error;
+
+      if (!data) {
         setStatus('not_found');
+      } else if (data.estado === 'pagado') {
+        setStatus('paid');
       } else {
         setStatus('pending');
       }
-    }, 1500);
+    } catch (err) {
+      console.error(err);
+      setStatus('not_found');
+    }
   };
 
   return (
