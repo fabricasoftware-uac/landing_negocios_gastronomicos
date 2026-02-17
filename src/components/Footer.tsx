@@ -57,9 +57,9 @@ export function Footer() {
             <h4 className="text-lg mb-4">Contacto</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <Mail className="text-orange-500 flex-shrink-0 mt-1" size={18} />
-                <a href="mailto:info@negociosgastronomicos.edu.co" className="text-gray-400 hover:text-orange-500 transition-colors text-sm">
-                  info@negociosgastronomicos.edu.co
+                <Mail className="text-orange-500 flex-shrink-0 mt-1 w-fit " size={18} />
+                <a href="mailto:infotecnicogastro@gmail.com" className="text-gray-400 hover:text-orange-500 transition-colors text-sm break-all">
+                  infotecnicogastro@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
