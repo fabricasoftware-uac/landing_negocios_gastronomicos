@@ -6,6 +6,8 @@ import { Stepper } from '../components/Stepper';
 import { StepDatosPersonales, type DatosPersonales } from '../components/enrollment/StepDatosPersonales';
 import { StepConfirmacion } from '../components/enrollment/StepConfirmacion';
 import { StepProcesandoPago } from '../components/enrollment/StepProcesandoPago';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 const STEPS = ['Datos personales', 'Confirmación', 'Pago'];
 
@@ -30,13 +32,28 @@ export default function Inscripcion() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      const { error } = await supabase.from('inscripciones').insert({
+        nombre_completo: formData.nombreCompleto,
+        documento: formData.documento,
+        email: formData.email,
+        telefono: formData.telefono,
+        ciudad: formData.ciudad,
+        nivel_educativo: formData.nivelEducativo,
+        acepta_terminos: formData.aceptaTerminos,
+      });
+      if (error) throw error;
+      toast.success('Inscripción guardada correctamente');
       setCurrentStep(2);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 2000);
+    } catch (err: any) {
+      console.error(err);
+      toast.error('Error al guardar la inscripción. Intenta de nuevo.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
