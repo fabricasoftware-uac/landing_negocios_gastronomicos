@@ -1,4 +1,3 @@
-
 CREATE TABLE public.inscripciones (
   id UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
   nombre_completo TEXT NOT NULL,
