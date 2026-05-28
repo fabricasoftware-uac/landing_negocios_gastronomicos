@@ -28,7 +28,7 @@ export function ModuloCard({ modulo, index }: ModuloCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow flex flex-col"
+      className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow"
     >
       <div className={`bg-gradient-to-r ${gradient} p-5 text-white`}>
         <div className="flex items-center gap-3 mb-2">
@@ -44,20 +44,20 @@ export function ModuloCard({ modulo, index }: ModuloCardProps) {
           </span>
           <span className="inline-flex items-center gap-1">
             <BookOpen size={14} />
-            {cursos?.length || 0} cursos
+            {cursos?.length || 0} {cursos?.length === 1 ? 'curso' : 'cursos'}
           </span>
         </div>
       </div>
 
-      <div className="p-4 flex-1 flex flex-col">
+      <div className="p-4">
         <p className="text-sm text-gray-600 leading-relaxed mb-4">
           {descripcionDelSemestre}
         </p>
 
         {cursos && cursos.length > 0 && (
-          <div className="grid grid-cols-1 gap-2 mt-auto">
+          <div className="grid grid-cols-1 gap-2">
             {cursos.map((curso, i) => (
-              <CursoDetail key={`${curso.sys?.id || ''}-${i}`} curso={curso} />
+              <CursoDetail key={`${curso.sys?.id || ''}-${i}`} curso={curso} index={i} total={cursos.length} />
             ))}
           </div>
         )}

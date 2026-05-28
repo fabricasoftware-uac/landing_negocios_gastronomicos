@@ -51,7 +51,7 @@ export function Curriculum({ modulos = [] }: CurriculumProps) {
           </div>
         </motion.div>
 
-        <div className="grid gap-6 md:gap-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-6 md:gap-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-start">
           {modulos.map((modulo, index) => (
             <ModuloCard key={modulo.sys.id} modulo={modulo} index={index} />
           ))}
