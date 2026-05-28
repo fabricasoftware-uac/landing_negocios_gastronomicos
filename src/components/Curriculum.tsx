@@ -13,7 +13,7 @@ export function Curriculum({ modulos = [] }: CurriculumProps) {
   }
 
   const totalHours = modulos.reduce(
-    (sum, m) => sum + (m.fields.totalDeHoras || 0),
+    (sum, m) => sum + Number(m.fields.totalDeHoras || 0),
     0,
   );
 
@@ -46,12 +46,12 @@ export function Curriculum({ modulos = [] }: CurriculumProps) {
           <div className="flex items-center justify-center gap-2 text-orange-600">
             <Clock size={24} />
             <span className="text-xl">
-              +{totalHours} horas totales &bull; {totalCursos} cursos
+              {totalHours} horas totales {'•'} {totalCursos} cursos
             </span>
           </div>
         </motion.div>
 
-        <div className="grid gap-5 md:gap-6">
+        <div className="grid gap-6 md:gap-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {modulos.map((modulo, index) => (
             <ModuloCard key={modulo.sys.id} modulo={modulo} index={index} />
           ))}

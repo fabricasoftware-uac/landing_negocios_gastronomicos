@@ -1,53 +1,60 @@
 import { motion } from 'motion/react'
-import { BookOpen, Sparkles } from 'lucide-react'
+import { ChevronDown, Sparkles, BookOpen } from 'lucide-react'
+import { useState } from 'react'
 import type { Curso } from '@/types/curriculum'
 
 interface CursoDetailProps {
   curso: Curso
-  index: number
 }
 
-export function CursoDetail({ curso, index }: CursoDetailProps) {
+export function CursoDetail({ curso }: CursoDetailProps) {
+  const [isOpen, setIsOpen] = useState(false)
   const { nombreDelCurso, queAprenderas, actividadDestacada } = curso.fields
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
-    >
-      <div className="p-5">
-        <div className="flex items-start gap-3 mb-3">
-          <div className="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-            <BookOpen size={16} className="text-orange-600" />
-          </div>
-          <h4 className="text-lg font-semibold text-gray-900 pt-0.5">
+    <div className="border border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:bg-gray-100 transition-colors">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full p-3 text-left flex items-center justify-between gap-2"
+      >
+        <div className="flex items-center gap-2 min-w-0">
+          <BookOpen size={14} className="text-orange-600 flex-shrink-0" />
+          <span className="text-sm font-medium text-gray-900 truncate">
             {nombreDelCurso}
-          </h4>
+          </span>
         </div>
+        <ChevronDown
+          size={16}
+          className={`text-gray-400 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
 
-        <div className="ml-11 space-y-3">
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="border-t border-gray-200 px-3 pb-3 pt-2 space-y-2"
+        >
           <div>
-            <h5 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-              <Sparkles size={12} />
+            <h5 className="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-1">
+              <Sparkles size={11} />
               Qué aprenderás
             </h5>
-            <p className="text-sm text-gray-700 leading-relaxed">
+            <p className="text-xs text-gray-700 leading-relaxed mt-0.5">
               {queAprenderas}
             </p>
           </div>
-
-          <div className="bg-orange-50 border border-orange-100 rounded-lg p-3">
-            <h5 className="text-xs font-bold text-orange-700 uppercase tracking-wider mb-1">
+          <div className="bg-orange-50 rounded-lg p-2.5">
+            <h5 className="text-xs font-bold text-orange-700 uppercase tracking-wider">
               Actividad destacada
             </h5>
-            <p className="text-sm text-orange-800 leading-relaxed">
+            <p className="text-xs text-orange-800 leading-relaxed mt-0.5">
               {actividadDestacada}
             </p>
           </div>
-        </div>
-      </div>
-    </motion.div>
+        </motion.div>
+      )}
+    </div>
   )
 }
