@@ -26,7 +26,7 @@ export function AboutProgram() {
             transition={{ duration: 0.6 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1758887261865-a2b89c0f7ac5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHJlc3RhdXJhbnQlMjBvd25lciUyMGVudHJlcHJlbmV1cnxlbnwxfHx8fDE3NzA3MzM0MzN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+              src="/enrique_gastronomico.png" 
               alt="Business owner" 
               className="w-full h-96 object-cover rounded-2xl shadow-xl"
             />

@@ -19,7 +19,6 @@ const Movimiento = () => {
       <HeroSection />
       <AboutProgram />
       <TargetAudience />
-      <StrategicPartner />
       <Differentiators />
       <Curriculum modulos={modulos} />
       <Benefits />

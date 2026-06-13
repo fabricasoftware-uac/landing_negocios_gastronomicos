@@ -54,7 +54,7 @@ export function Benefits() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
@@ -64,17 +64,21 @@ export function Benefits() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-200 hover:border-orange-300 hover:shadow-xl transition-all"
+                className="bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200 hover:border-orange-300 hover:shadow-xl transition-all p-5 sm:p-8"
               >
-                <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mb-6">
-                  <Icon className="text-white" size={32} />
+                <div className="flex items-center gap-4 sm:gap-0 sm:flex-col sm:items-start">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-orange-600 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 sm:mb-6">
+                    <Icon className="text-white" size={24} />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-base sm:text-xl text-gray-900 mb-1 sm:mb-3">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                      {benefit.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl text-gray-900 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600">
-                  {benefit.description}
-                </p>
               </motion.div>
             );
           })}
@@ -89,7 +93,7 @@ export function Benefits() {
         >
           <div>
             <img 
-              src="https://images.unsplash.com/photo-1611653682161-f58ba65ead46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjYWZlJTIwaW50ZXJpb3IlMjBkZXNpZ258ZW58MXx8fHwxNzcwNzAyMTYxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+              src="/benefits.jpg" 
               alt="Modern cafe" 
               className="w-full h-96 object-cover rounded-2xl shadow-xl"
             />

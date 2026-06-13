@@ -16,7 +16,7 @@ export function FinalCTA() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1560963614-153d4432f741?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWtlcnklMjBwYXN0cnklMjBidXNpbmVzc3xlbnwxfHx8fDE3NzA3MzM0MzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+          src="/final_cta.jpg" 
           alt="Bakery" 
           className="w-full h-full object-cover"
         />

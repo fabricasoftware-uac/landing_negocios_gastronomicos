@@ -35,11 +35,11 @@ export function Header() {
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-md shadow-orange-200">
-              <span className="text-white text-lg font-bold font-display">GA</span>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center ">
+              <img src="gran_anfitrion.png" alt="El Gran Anfitrión" />
             </div>
             <div className="leading-tight">
-              <span className="text-sm md:text-base font-semibold text-[#f59300] font-[Quicksand] tracking-wide block">
+              <span className="text-sm md:text-base font-semibold text-orange-500 font-[Quicksand] tracking-wide block">
                 EL GRAN ANFITRIÓN
               </span>
               <span className="text-xs text-gray-500 font-[Quicksand] block">
